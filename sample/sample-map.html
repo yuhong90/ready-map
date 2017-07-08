@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<meta charset="UTF-8" />
+	<title>Sample Ready-to-use map</title>
+
+	<link rel="stylesheet" href="./map.css" />
+	<!--import leaflet dependencies-->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+
+	<!--import map implementation dependencies-->
+	<script src="./map/ready-map=user-recenter-control.js"></script>
+	<script src="./map/ready-map.js"></script>
+</head>
+
+<body>
+	<div id="map"></div>
+	<script type="text/javascript">
+		var onemapbetalink = 'http://maps-{s}.onemap.sg/v2/Default/{z}/{x}/{y}.png';
+		var onmapnightlink = 'http://maps-{s}.onemap.sg/v2/Night/{z}/{x}/{y}.png';
+
+		function mapLoaded() {
+			// Map loaded; adding demo markers
+			quickAddCaseMarker(1.3116, 103.779);
+			quickAddUserMarker(1.311, 103.783895, 'you can add a popup to user marker');
+			quickAddCaseMarker(1.306, 103.791, 'this is a event popup that you can use');
+
+			// Setting up recenter button control
+			setupRecenterBtnOnMap(getRecenterBtn());
+			displayRecenterBtnOnMap();
+		}
+
+		function mapError(err) {
+			console.log('map error');
+		}
+
+		createMapView("map", onmapnightlink, true, true, true, 13, mapLoaded, mapError);
+	</script>
+</body>
+
+</html>

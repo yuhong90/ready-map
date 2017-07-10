@@ -2,7 +2,7 @@
 
 Simple implementation of a map wrapper module using Leaflet. 
 
-The aim is to bootstrap the implementing a event-exploratory type map.
+The aim is to bootstrap the implementing of a event-exploratory type map.
 
 Some custom behaviours implemented in this map wrapper include: 
 - Map created with 2 layers - base tiles & markers

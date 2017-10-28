@@ -9,13 +9,19 @@ Some custom behaviours implemented in this map wrapper include:
 - Using of any base tile layer url
 - Default user and event markers for quick use
 - Re-center button that focuses on the user marker when clicked
-
+- Map boundaries restricted to singapore coordinates
 
 ### Run Sample 
-To test out using the module: 
-Start web server by `cd sample` , `npm start`.
+
+Restore packages with `npm install`.
+
+Run sample map page with `npm start`.
 
 View sample map using this map wrapper @ [http://localhost:8080/sample](http://localhost:8080/sample).
+
+### Run Tests 
+Run tests with `npm start`.
+
 
 ### Quick Start
 
@@ -40,6 +46,7 @@ Create map with `createMapView(mapDivName, mapTileUrl, isDraggable, isZoomable, 
 	<div id="map"></div>
 	<script type="text/javascript">
 		var mapUrl = '<your base map tile url>';
+		initMap(L);
 		createMapView("map", mapUrl, true, true, true, 13, function(){
 			// map loaded
 			quickAddCaseMarker(1.3116, 103.779);
@@ -57,8 +64,8 @@ Create map with `createMapView(mapDivName, mapTileUrl, isDraggable, isZoomable, 
 ```
 
 ### Contributing 
-- [Refactor] Better structure for better usability
-- [Tests] Unit tests
+- [Refactor] Better modularity and structure for better usability
+- [Tests] More unit tests
 - [Upgrading Dependency] Update leaflet version
 - [Feature] Bulk insert of markers via a json input
 - [Feature] Adding of new layers at certain position

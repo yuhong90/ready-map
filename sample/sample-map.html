@@ -10,6 +10,7 @@
 	<!--import leaflet dependencies-->
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
 	<script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 
 	<!--import map implementation dependencies-->
 	<script src="./map/ready-map-user-recenter-control.js"></script>
@@ -28,6 +29,10 @@
 			quickAddUserMarker(1.311, 103.783895, 'you can add a popup to user marker');
 			quickAddCaseMarker(1.306, 103.791, 'this is a event popup that you can use');
 
+			// $.get('./assets/markers.json', function (data) {
+			// 	bulkAddCaseMarker(data.locations);
+			// });
+
 			// Setting up recenter button control
 			setupRecenterBtnOnMap(getRecenterBtn());
 			displayRecenterBtnOnMap();
@@ -37,6 +42,7 @@
 			console.log('map error');
 		}
 
+		initMap(L);
 		createMapView("map", onmapnightlink, true, true, true, 13, mapLoaded, mapError);
 	</script>
 </body>

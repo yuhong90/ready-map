@@ -1,4 +1,5 @@
-﻿//markers 
+﻿var L;
+//markers 
 var markerIconList = {};
 var userMarker;
 var defaultRecenterBtnImgUrl = {
@@ -27,19 +28,27 @@ var isMapError = false;
 var MAX_ZOOM = 19;
 var VIEWBOUND_PAD_RATIO = 0.2;
 var aryViewableBounds = [];             //for map extent
-var centerPoint = new L.LatLng(1.319536, 103.842);
+var centerPoint;
 
 //map layers var
 var map;
 var base;	                            //map baselayer
-var markerLayer = L.featureGroup();
+var markerLayer;
 var mapControls = {};
+
+function initMap(L) {
+	L = this.L;
+	centerPoint = new L.LatLng(1.319536, 103.842);
+	markerLayer = L.featureGroup();
+}
+
 
 //setup map components
 function initDefaultMarkerIcons() {
 	//setup default map icons
 	markerIconList.greenIcon = L.icon(defaultIconOptions.green);
 	markerIconList.blueIcon = L.icon(defaultIconOptions.blue);
+	return markerIconList;
 }
 
 function addCustomMarkerIcon(iconName, options) {
@@ -65,6 +74,7 @@ function setupBaseTitleLayer(mapTileUrl, mapErrorCallback) {
 	} catch (err) {
 		mapErrorCallback(err);
 	}
+	return base;
 }
 
 function setMapMaxBoundsWithinSG() {
@@ -88,6 +98,7 @@ function setupMapObject(mapDivName, draggable, touchZoom, zoomControl, initialZo
 	});
 	map.attributionControl.setPrefix('Leaflet');    //remove hyperlink from attribution
 	setMapMaxBoundsWithinSG();
+	return map;
 }
 
 function updateMapExtent() {

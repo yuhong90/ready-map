@@ -36,17 +36,17 @@ function getRecenterBtn() {
 	return recenterBtn
 }
 
-function setupRecenterBtn(map, userMarker) {
+function setupRecenterBtn(userMarker) {
 	recenterBtnImg.addEventListener("touchend", function (event) {
-		handleRecenterBtnClicked(event, map, userMarker);
+		handleRecenterBtnClicked(event, userMarker);
 	}, false);
 
 	recenterBtnImg.addEventListener("mouseup", function (event) {
-		handleRecenterBtnClicked(event, map, userMarker);
+		handleRecenterBtnClicked(event, userMarker);
 	}, false);
 }
 
-function handleRecenterBtnClicked(event, map, userMarker) {
+function handleRecenterBtnClicked(event, userMarker) {
 	event.preventDefault();
 	toggleRecenterButtonImage(userMarker);
 }
@@ -57,7 +57,7 @@ function initRecenterBtnImg(map, userMarker, btnOffImgSource, btnOnImgSource) {
 	RECENTER_BTNON_SOURCE = btnOnImgSource;
 	encodeBase64ForStorage(RECENTER_BTNOFF_SOURCE, RECENTER_BTNON_SOURCE, recenterOffBase64URL, recenterOnBase64URL, recenterBtnImg, function () {
 		console.log('setting up recenter');
-		setupRecenterBtn(map, userMarker);
+		setupRecenterBtn(userMarker);
 	});
 }
 

@@ -1,6 +1,6 @@
-let sinon = require('sinon');
-let chai = require('chai');
-let expect = chai.expect;
+const sinon = require('sinon');
+const chai = require('chai');
+const expect = chai.expect;
 
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
@@ -20,7 +20,6 @@ describe('ready-map.test.js', function () {
 		window.document.body.appendChild(scriptEl);
 
 		let map = fs.readFileSync('./src/ready-map.js', { encoding: "utf-8" });
-		// Execute leaflet by inserting a <script> tag containing it.
 		const scriptMapEl = window.document.createElement("script");
 		scriptMapEl.textContent = map;
 		window.document.body.appendChild(scriptMapEl);
@@ -28,7 +27,6 @@ describe('ready-map.test.js', function () {
 		window.eval(`
 		var onemapbetalink = 'http://maps-{s}.onemap.sg/v2/Default/{z}/{x}/{y}.png';
 		initMap(L);
-
 		initDefaultMarkerIcons();
 		setupBaseTitleLayer(onemapbetalink);
 	  `);
@@ -44,7 +42,6 @@ describe('ready-map.test.js', function () {
 		var testData = { mapDivName: 'map', isDraggable: true, isZoomable: true, hasZoomControl: true, initialZoomLvl: 13 };
 		var createdMap = setupMapObject(testData.mapDivName, testData.isDraggable, testData.isZoomable, testData.hasZoomControl, testData.initialZoomLvl);
 	  `);
-
 		expect(window.createdMap.options.layers.length).to.eql(2);
 		expect(window.createdMap.options.zoom).to.eql(13);
 		expect(window.createdMap.options.dragging).to.eql(true);

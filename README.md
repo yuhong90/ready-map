@@ -20,7 +20,7 @@ Run sample map page with `npm start`.
 View sample map using this map wrapper @ [http://localhost:8080/sample](http://localhost:8080/sample).
 
 ### Run Tests 
-Run tests with `npm start`.
+Run tests with `npm test`.
 
 
 ### Quick Start
